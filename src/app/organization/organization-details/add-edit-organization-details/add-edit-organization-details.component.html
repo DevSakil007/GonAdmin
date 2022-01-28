@@ -1,0 +1,295 @@
+<ion-content >
+  <div class="ion-padding">
+<h1>ADD ORGANIZATION DETAILS FORM</h1>
+
+<mat-card>
+ 
+   
+  <form style="overflow-y: scroll; height: 400px;" flex-form [formGroup]="organizationDetails" (ngSubmit)="saveOrganizationDetails()">
+  <mat-stepper labelPosition="bottom" #stepper>
+    
+    
+    <!-- BASIC INFO START-->
+
+    <mat-step [stepControl]="firstFormGroup">
+       <ng-template matStepLabel>BASIC INFO</ng-template>
+        
+        <mat-form-field size-md color="accent"  appearance="outline">
+          <mat-label> NAME</mat-label>
+          <input matInput formControlName="organizationName" placeholder="ORGANIZATION NAME">
+        </mat-form-field>
+      
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> SORT NAME </mat-label>
+          <input matInput placeholder="SORT NAME">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> DESCRIPTION </mat-label>
+          <input matInput placeholder="DESCRIPTION">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> TYPE</mat-label>
+          <mat-select>
+            <mat-option >SCHOOL</mat-option>
+            <mat-option >COLLEGE</mat-option>
+            <mat-option >COACHING CENTER</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> FACILITY</mat-label>
+          <mat-select multiple>
+            <mat-option >dsa</mat-option>
+            <mat-option >dsa</mat-option>
+            <mat-option >dsa</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <!-- BASIC INFO END-->
+
+    <!-- ADDRESS INFO START-->
+
+     <mat-step [stepControl]="secondFormGroup" optional>
+      
+        <ng-template matStepLabel> ADDRESS && CONTACT </ng-template>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> ADDRESS </mat-label>
+          <input matInput placeholder="ORGANIZATION ADDRESS">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> CITY</mat-label>
+          <input matInput placeholder="ORGANIZATION CITY">
+        </mat-form-field> 
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> AREA</mat-label>
+          <input matInput placeholder="ORGANIZATION AREA">
+        </mat-form-field> 
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> LANDMARK</mat-label>
+          <input matInput placeholder="ORGANIZATION LANDMARK">
+        </mat-form-field> 
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> STATE</mat-label>
+          <input matInput placeholder="ORGANIZATION STATE">
+        </mat-form-field> 
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> PINCODE</mat-label>
+          <input matInput placeholder="ORGANIZATION PINCODE">
+        </mat-form-field> 
+  
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> COUNTRY</mat-label>
+          <input matInput placeholder="ORGANIZATION COUNTRY">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> PRIMARY CONTACT</mat-label>
+          <input matInput placeholder="PRIMARY CONTACT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> SECONDARY CONTACT</mat-label>
+          <input matInput placeholder="SECONDARY CONTACT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> EMAIL </mat-label>
+          <input matInput placeholder="EMAIL">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> FAX </mat-label>
+          <input matInput placeholder="FAX">
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      
+      </mat-step>
+
+      <!-- ADDRESS INFO END-->
+
+      <!-- COURSE INFO START-->
+
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>COURSE INFO</ng-template>
+       
+      <mat-form-field size-md color="accent" appearance="outline">
+         <mat-label> COURSE/DEGREE</mat-label>
+         <mat-select multiple>
+           <mat-option >SCHOOL</mat-option>
+           <mat-option >COLLEGE</mat-option>
+           <mat-option >COACHING CENTER</mat-option>
+         </mat-select>
+       </mat-form-field>
+ 
+       <mat-form-field size-md color="accent" appearance="outline">
+         <mat-label> STREAM</mat-label>
+         <mat-select multiple>
+           <mat-option >SCIENCE</mat-option>
+           <mat-option >ARTS</mat-option>
+           <mat-option >COMMERCE</mat-option>
+         </mat-select>
+       </mat-form-field>
+
+       <div cdkDropListGroup>
+        <div class="example-container">
+          <h2>ALL COURSE LIST</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="todo"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      
+        <div class="example-container">
+          <h2>SELECTED COURSE</h2>
+      
+          <div
+            cdkDropList
+            [cdkDropListData]="done"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+
+       <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+       </div>
+    </mat-step>
+
+    <!-- COURSE INFO END-->
+
+      <!-- CONTACT INFO START-->
+
+      <mat-step [stepControl]="thirdFormGroup" >
+      
+        <ng-template matStepLabel> CONTACT INFO </ng-template>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> PRIMARY CONTACT</mat-label>
+          <input matInput placeholder="PRIMARY CONTACT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> SECONDARY CONTACT</mat-label>
+          <input matInput placeholder="SECONDARY CONTACT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> EMAIL </mat-label>
+          <input matInput placeholder="EMAIL">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> FAX </mat-label>
+          <input matInput placeholder="FAX">
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      
+      </mat-step>
+
+      <!-- CONTACT INFO END-->
+
+      <!-- FACULTY INFO START-->
+
+      <mat-step [stepControl]="thirdFormGroup" >
+      
+        <ng-template matStepLabel> FACULTY INFO </ng-template>
+        
+        <div formArrayName="formArray">
+        <div  *ngFor="let control of organizationDetails.controls['formArray'].controls; let i = index">
+        <!-- <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> FULL NAME</mat-label>
+          <input matInput formControlName="fulName" placeholder="TEACHER FULL NAME">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> DESIGNATION</mat-label>
+          <input matInput formControlName="designation" placeholder="TEACHER DESIGNATION">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> DEPERTMENT </mat-label>
+          <input matInput formControlName="depertment" placeholder="TEACHER DEPERTMENT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> SUBJECT EXPERTIES </mat-label>
+          <input matInput formControlName="subjectExperties" placeholder="TEACHER SUBJECT EXPERTIES">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> CONTACT NO </mat-label>
+          <input matInput formControlName="contact" placeholder="TEACHER CONTACT">
+        </mat-form-field>
+
+        <mat-form-field size-md color="accent" appearance="outline">
+          <mat-label> EMAIL </mat-label>
+          <input matInput formControlName="email" placeholder="TEACHER EMAIL">
+        </mat-form-field> -->
+        <button type="button" (click)="delInput(i)">Delete</button>
+        <app-faculty-form [organizationDetails]="organizationDetails.controls.formArray.controls[i]"></app-faculty-form>
+      </div>
+    </div>
+      <button type="button" (click)="addInput()">Add</button>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      
+      </mat-step>
+
+      <!-- FACULTY INFO END-->
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+
+        
+
+       
+        
+        <button  mat-raised-button type="submit"   color="primary" >SUBMIT</button>
+        <button  mat-raised-button type="reset" style="margin-left: 10px;" color="primary" >RESET</button>
+        <br>
+        <br>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+ 
+  </mat-stepper>
+</form>
+
+</mat-card>
+
+  </div>
+</ion-content>

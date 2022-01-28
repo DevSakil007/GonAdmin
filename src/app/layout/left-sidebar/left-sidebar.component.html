@@ -1,0 +1,50 @@
+<ion-menu contentId="main-content" type="overlay" class="main-me">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    
+    <ion-list lines="none" class="menu-item">
+
+      <ion-menu-toggle auto-hide="false" class="first-menu"></ion-menu-toggle>
+      
+        <ion-item *ngFor="let p of menuDetailsList; let i=index;" [routerDirection]="'root'" (click)="levelNav1('navX'+i)" [ngClass]="{active: isNav1Displayed('navX'+i)}">
+          <ion-label *ngIf="p.nav === undefined ;then content else other_content">   </ion-label>             
+            
+             
+          <ng-template #content>
+            <ion-label>
+               
+                <li  [routerLink]="[p.url]">
+              
+                  <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                  <ion-menu-toggle auto-hide="false" class="first-menu">{{p.name}}</ion-menu-toggle>
+                  </li>               
+                </ion-label>
+
+              </ng-template>
+              <ng-template #other_content>
+                <ion-label>
+                  <ion-icon [name]="p.icon"></ion-icon>
+                  {{p.name}}
+                  <ion-icon [name]="isNav1Displayed('navX'+i) ? 'chevron-down-outline' : 'chevron-forward-outline'" slot="end"></ion-icon>
+                 
+                  
+                  <ul *ngIf="isNav1Displayed('navX'+i)" class="nav3">
+                    <li *ngFor="let i3 of p.nav; let l=index;" [routerLink]="[i3.url]">
+                      <ion-icon [name]="i3.icon"></ion-icon>
+                      <ion-menu-toggle auto-hide="false" class="first-menu">{{i3.name}}</ion-menu-toggle>
+                    </li>
+                  </ul>
+                </ion-label>
+
+              </ng-template>
+        </ion-item>
+    </ion-list>
+
+    
+  </ion-content>
+</ion-menu>

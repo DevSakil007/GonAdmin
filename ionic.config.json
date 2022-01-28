@@ -1,0 +1,7 @@
+{
+  "name": "edu-learn-admin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

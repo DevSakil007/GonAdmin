@@ -1,0 +1,29 @@
+ion-menu-button {
+    color: var(--ion-color-primary);
+  }
+  
+ 
+  .section::-webkit-scrollbar {
+    width: 10px;
+} 
+
+  
+  [size-md] {
+    width: 50%;
+   
+  }
+  [height-sm]{
+    height: 2rem !important;
+  }
+  [size-sm] {
+    font-size: 0.8rem;
+  }
+
+
+ .btn{
+   text-align: center;
+ }
+
+ .mat-form-field{
+   padding: 2px;
+ }

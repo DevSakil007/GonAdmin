@@ -1,0 +1,95 @@
+<ion-content>
+<div class="ion-padding">
+ 
+  <mat-card>
+    <mat-card-title class="add-flex"
+    ><span>ORGANIZATION TYPE LIST</span>
+    <span>
+      <button mat-icon-button color="primary" matTooltip="Import File">
+        <mat-icon>import_export</mat-icon>
+      </button>
+
+      
+      <button
+        
+        mat-icon-button
+        color="primary"
+        [routerLink]="['addEditOrganizationType']"
+        matTooltip="Add"
+      >
+        <mat-icon>add</mat-icon>
+      </button></span
+    >
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Search Item"
+        #input
+      />
+    </mat-form-field>
+  <div class="mat-elevation-z8">
+  
+    <table mat-table [dataSource]="dataSource" matSort>
+    
+      <ng-container matColumnDef="sl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        SL.NO
+        </th>
+        <td mat-cell *matCellDef="let row; let i = index;"> {{i+1}} </td>
+      </ng-container>
+      <!-- ID Column -->
+      <ng-container matColumnDef="org_type_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          TYPE NAME
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.org_type_name }}</td>
+      </ng-container>
+
+      <!-- Holiday Set Column -->
+      <ng-container matColumnDef="org_type_description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+         DESCRIPTION
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.org_type_description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ACTION</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button><mat-icon
+            class="role-icon"
+            matTooltip="Click to Edit"
+            [matTooltipPosition]="'above'"
+            (click)="editOrganizationType(row.organization_type_id)"
+            >edit</mat-icon>
+          </button>
+          
+          <button mat-icon-button>
+            <mat-icon
+            class="role-icon"
+            matTooltip="Click to Remove"
+            [matTooltipPosition]="'above'"
+            (click)="openDialog(row.organization_type_id)"
+            >delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+
+  </div>
+</mat-card-content>
+</mat-card>
+</div>
+   </ion-content>

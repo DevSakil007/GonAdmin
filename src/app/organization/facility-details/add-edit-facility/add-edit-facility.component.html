@@ -1,0 +1,37 @@
+<!-- <p>
+  add-edit-facility works!
+</p> -->
+<ion-content >
+  <div class="ion-padding">
+<h1>ADD FACILITY DETAILS FORM</h1>
+
+<mat-card>
+ 
+  <form flex-form  [formGroup]="addEditFacility" (ngSubmit)="saveFacility()" #form="ngForm" >
+
+     <mat-form-field size-md color="accent"  appearance="outline" >
+       <mat-label>FACILITY NAME</mat-label>
+       <input matInput formControlName="facilityName" placeholder="FACILITY NAME">
+       <mat-error style="color: red;"
+          *ngIf="addEditFacility.get('facilityName').hasError('required') && form.submitted">
+          FACILITY NAME REQUIRED
+        </mat-error>
+      
+     </mat-form-field>
+     <mat-form-field size-md color="accent" appearance="outline">
+       <mat-label>FACILITY DESCRIPTION</mat-label>
+       <input matInput formControlName="facilityDescription" placeholder="FACILITY DESCRIPTION">
+       <mat-error style="color: red;"
+       *ngIf="addEditFacility.get('facilityDescription').hasError('required') && form.submitted">
+       FACILITY DESCRIPTION REQUIRED
+     </mat-error>
+      </mat-form-field>  
+     <div class="btn">
+       <button  mat-raised-button  type="submit"   color="primary" >SUBMIT</button>
+       <button  mat-raised-button type="reset" style="margin-left: 10px;" color="primary" >RESET</button>    
+     </div>
+    
+   </form> 
+  </mat-card>
+</div>
+</ion-content>

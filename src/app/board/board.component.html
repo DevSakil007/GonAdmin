@@ -1,0 +1,87 @@
+
+    <div class="ion-padding">
+      <mat-card>
+        <mat-card-title class="add-flex">
+          <span>BOARD/UNIVERSITY LIST </span>
+          <span>
+            <button mat-icon-button color="primary" matTooltip="Import File">
+              <mat-icon>import_export</mat-icon>
+            </button>
+                
+            <button mat-icon-button color="primary"  matTooltip="Add" 
+            [routerLink]="['add']">     
+              <mat-icon>add</mat-icon>
+            </button>
+        </span>
+          
+        </mat-card-title>
+              
+        <mat-card-content>
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Filter</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Search Item"
+              #input
+            />
+          </mat-form-field>
+         
+          <div class="mat-elevation-z8 ">
+            <table mat-table [dataSource]="dataSource" matSort>
+  
+              <ng-container matColumnDef="sl.no">
+                  <th mat-header-cell *matHeaderCellDef>SL.NO</th>
+                  <td  mat-cell *matCellDef="let element; let i = index;"> {{i + 1}} </td>
+              </ng-container>
+      
+              <ng-container matColumnDef="board_name">
+                 <th mat-header-cell *matHeaderCellDef>BOARD NAME</th>
+                 <td  mat-cell *matCellDef="let element"> {{element.board_name}} </td>
+              </ng-container>   
+
+              <ng-container matColumnDef="board_short_name">
+                <th mat-header-cell *matHeaderCellDef>SHORT NAME</th>
+                <td  mat-cell *matCellDef="let element"> {{element.board_short_name}} </td>
+             </ng-container>  
+
+             <ng-container matColumnDef="board_description">
+              <th mat-header-cell *matHeaderCellDef>DESCRIPTION</th>
+              <td  mat-cell *matCellDef="let element"> {{element.board_description}} </td>
+           </ng-container>  
+                       
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>ACTION</th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button><mat-icon
+                    class="role-icon"
+                    matTooltip="Click to Edit"
+                    [matTooltipPosition]="'above'"
+                    (click)="editBoard(element.board_id)">
+                    edit</mat-icon>
+                  </button>
+                  
+                  <button mat-icon-button>
+                    <mat-icon
+                    class="role-icon"
+                    matTooltip="Click to Remove"
+                    [matTooltipPosition]="'above'"
+                    (click)="openDialog(element.board_id)"
+                    >delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
+            </table>
+      
+            <mat-paginator
+              [pageSizeOptions]="[5, 10, 25, 50, 100]"
+              showFirstLastButtons
+            ></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+   

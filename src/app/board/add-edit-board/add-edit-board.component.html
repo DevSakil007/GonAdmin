@@ -1,0 +1,47 @@
+<!-- <p>
+  add-edit-board works!
+</p> -->
+<ion-content >
+  <div class="ion-padding">
+<h1>ADD BOARD/UNIVERSITY</h1>
+
+<mat-card>
+   
+  <form flex-form  [formGroup]="addEditBoard" (ngSubmit)="saveBoard()" #form="ngForm" >
+
+     <mat-form-field size-md color="accent"  appearance="outline" >
+       <mat-label>BOARD NAME</mat-label>
+       <input matInput formControlName="boardName" placeholder="BOARD NAME">
+       <mat-error style="color: red;"
+          *ngIf="addEditBoard.get('boardName').hasError('required') && form.submitted">
+          BOARD NAME REQUIRED
+        </mat-error> 
+     </mat-form-field>
+
+     <mat-form-field size-md color="accent"  appearance="outline" >
+      <mat-label> SHORT NAME</mat-label>
+      <input matInput formControlName="boardShortName" placeholder="BOARD SHORT NAME">
+      <mat-error style="color: red;"
+         *ngIf="addEditBoard.get('boardShortName').hasError('required') && form.submitted">
+         BOARD SHORT NAME REQUIRED
+       </mat-error> 
+    </mat-form-field>
+
+    <mat-form-field size-md color="accent"  appearance="outline" >
+      <mat-label> DESCRIPTION</mat-label>
+      <input matInput formControlName="boardDescription" placeholder="BOARD DESCRIPTION">
+      <!-- <mat-error style="color: red;"
+         *ngIf="addEditBoard.get('boardDescription').hasError('required') && form.submitted">
+         BOARD DESCRIPTION REQUIRED
+       </mat-error>  -->
+    </mat-form-field>
+
+      <div class="btn">
+       <button  mat-raised-button  type="submit"   color="primary" >SUBMIT</button>
+       <button  mat-raised-button type="reset" style="margin-left: 10px;" color="primary" >RESET</button>    
+     </div>
+    
+   </form> 
+  </mat-card>
+</div>
+</ion-content>
